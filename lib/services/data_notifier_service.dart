@@ -14,16 +14,21 @@ class DataNotifier extends StateNotifier<List<Users>> {
       var data = response.data;
       if (data is List) {
         List<Users> newData = data.map((e) => Users.fromJson(e)).toList();
-
+        //  state = data.map((e) => Users.fromJson(e)).toList();
         ourData = newData;
+        // state = newData;
         return ourData;
+        // return [...state];
       }
     }
     return ourData;
+    // return [...state];
   }
 
-  void reversedItems() {
-    state = ourData.reversed.toList();
+  reversedItems() {
+    state = ourData;
+    state = state.reversed.toList();
+    return [...state];
   }
 
   deleteItem(int index) {
@@ -32,6 +37,7 @@ class DataNotifier extends StateNotifier<List<Users>> {
     state = itemList;
     debugPrint('silindi $index');
     debugPrint('list ${ourData.length}');
+    return [...state];
   }
 
   void addItem() {}
