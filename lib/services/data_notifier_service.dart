@@ -23,12 +23,13 @@ class DataNotifier extends StateNotifier<List<Users>> {
   }
 
   void reversedItems() {
-    ourData.reversed;
+    state = ourData.reversed.toList();
   }
 
-  void deleteItem(int index) {
+  deleteItem(int index) {
     final itemList = ourData;
     itemList.removeAt(index);
+    state = itemList;
     debugPrint('silindi $index');
     debugPrint('list ${ourData.length}');
   }
